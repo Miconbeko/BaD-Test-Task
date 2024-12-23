@@ -8,5 +8,4 @@ class ConsoleReader : public AbstractReader {
     public:
         ConsoleReader(string input) : AbstractReader(input) {};
         void read();
-        map<int, vector<int>> toMap(); 
 };

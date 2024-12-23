@@ -14,11 +14,7 @@ bool AbstractReader::compare(int a, int b) {
 map<int, vector<int>> AbstractReader::toMap() {
     map<int, vector<int>> graph;
 
-    this->read();
-
-    nodeList.push_back(208460);
-    nodeList.push_back(608017);
-    nodeList.push_back(177092);
+    this->read();    
 
     for (int key : nodeList) {
         vector<int> values;
