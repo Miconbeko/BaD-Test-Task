@@ -11,4 +11,4 @@ using namespace std;
 
 string pathToString(queue<string> &path);
 
-string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen = {}, queue<string> pat = {});
+string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen = {}, string path = {});
