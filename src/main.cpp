@@ -19,11 +19,11 @@ int main() {
 
     ConsoleReader cr(input);
 
-    map<int, vector<int>> graph = cr.toMap();
+    map<string, vector<string>> graph = cr.toMap();
 
-    for (map<int, vector<int>>::iterator it = graph.begin(); it != graph.end(); it++) {
+    for (map<string, vector<string>>::iterator it = graph.begin(); it != graph.end(); it++) {
         string res = dfs(graph, it->first);
-        cout << res << endl;
+        cout << res << endl << endl;
     }
 
     return 0;

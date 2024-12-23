@@ -6,5 +6,5 @@ void ConsoleReader::read() {
     char d = '\n';
     
     while(getline(ss, line, d))
-        this->nodeList.push_back(stoi(line));
+        this->nodeList.push_back(line);
 }

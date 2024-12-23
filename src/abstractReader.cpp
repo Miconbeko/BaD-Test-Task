@@ -1,25 +1,18 @@
 #include "../includes/abstractReader.h"
 
-bool AbstractReader::compare(int a, int b) {
-    int aKey = a %= 100;
-    int bKey = 0;
-
-    for (; b / 10 != 0; b /= 10) {
-        bKey = b % 100;
-    }
-
-    return aKey == bKey;
+bool AbstractReader::compare(string a, string b) {
+    return a.substr(0, 2) == b.substr(b.length() - 2);
 }
 
-map<int, vector<int>> AbstractReader::toMap() {
-    map<int, vector<int>> graph;
+map<string, vector<string>> AbstractReader::toMap() {
+    map<string, vector<string>> graph;
 
     this->read();    
 
-    for (int key : nodeList) {
-        vector<int> values;
+    for (string key : nodeList) {
+        vector<string> values;
 
-        for (int value : nodeList) {
+        for (string value : nodeList) {
             if (key == value) continue;
             if (!compare(key, value)) continue;
 

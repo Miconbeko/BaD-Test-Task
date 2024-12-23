@@ -1,24 +1,23 @@
 #include "../includes/dfs.h"
 
-string pathToString(queue<int> &path) {
+string pathToString(queue<string> &path) {
     string str;
     
     while (!path.empty()) {
-        str += to_string(path.front());
+        str += path.front();
         path.pop();
     }
 
     return str;
 }
 
-string dfs(map<int, vector<int>> &graph, int currentNode, set<int> seen, queue<int> path) {
+string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen, queue<string> path) {    
     path.push(currentNode);
-    for (int edge : graph[currentNode]) {
-        if (seen.find(edge) == seen.end()) {
-            seen.insert(edge);
+    seen.insert(currentNode);
 
+    for (string edge : graph[currentNode]) {
+        if (seen.find(edge) == seen.end())
             return dfs(graph, edge, seen, path);
-        }
     }
 
     return pathToString(path);

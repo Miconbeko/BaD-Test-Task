@@ -9,12 +9,12 @@ using namespace std;
 class AbstractReader {
     protected: 
         string input;
-        list<int> nodeList;
+        list<string> nodeList;
         
-        bool compare(int a, int b);
+        bool compare(string a, string b);
         virtual void read() = 0;
 
     public:
         AbstractReader(string input) { this->input = input; };
-        map<int, vector<int>> toMap(); 
+        map<string, vector<string>> toMap(); 
 };

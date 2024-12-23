@@ -9,6 +9,6 @@
 
 using namespace std;
 
-string pathToString(queue<int> &path);
+string pathToString(queue<string> &path);
 
-string dfs(map<int, vector<int>> &graph, int currentNode, set<int> seen = {}, queue<int> pat = {});
+string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen = {}, queue<string> pat = {});
