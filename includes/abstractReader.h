@@ -1,16 +1,20 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <list>
+#include <iostream>
 
 using namespace std;
 
 class AbstractReader {
     protected: 
         string input;
-        vector<int> arr;
+        list<int> nodeList;
+        
+        bool compare(int a, int b);
+        virtual void read() = 0;
 
     public:
         AbstractReader(string input) { this->input = input; };
-        virtual void read() = 0;
-        virtual map<int, vector<int>> toMap() = 0; 
+        map<int, vector<int>> toMap(); 
 };
