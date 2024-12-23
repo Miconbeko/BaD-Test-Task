@@ -11,14 +11,21 @@ string pathToString(queue<string> &path) {
     return str;
 }
 
-string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen, queue<string> path) {    
-    path.push(currentNode);
+string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen, string path) {    
+    path += currentNode;
     seen.insert(currentNode);
 
+    string longestPath = path;
+
     for (string edge : graph[currentNode]) {
-        if (seen.find(edge) == seen.end())
-            return dfs(graph, edge, seen, path);
+        // cout << currentNode << " " << edge << endl;
+        if (seen.find(edge) == seen.end()) {
+            string res = dfs(graph, edge, seen, path);
+
+            if (longestPath.size() < res.size())
+                longestPath = res;
+        }
     }
 
-    return pathToString(path);
+    return longestPath;
 }

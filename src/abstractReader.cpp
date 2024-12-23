@@ -1,7 +1,7 @@
 #include "../includes/abstractReader.h"
 
 bool AbstractReader::compare(string a, string b) {
-    return a.substr(0, 2) == b.substr(b.length() - 2);
+    return a.substr(b.length() - 2) == b.substr(0, 2);
 }
 
 map<string, vector<string>> AbstractReader::toMap() {
