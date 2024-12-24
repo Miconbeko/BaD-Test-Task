@@ -3,8 +3,22 @@
 #include "../includes/dfs.h"
 
 #include <string.h>
+#include <istream>
 
 using namespace std;
+
+void fileOutput(string result, string filePath = "output.txt") {
+    ofstream of(filePath);
+
+    if (!of.is_open()) {
+        cout << "Failed to open a file '" << filePath << "'." << endl;
+        return;
+    }
+
+    of << result << endl;
+
+    of.close();
+}
 
 int main(int argc, char* argv[]) {
     if (argc == 1 || (argc > 1 && strcmp(argv[1], "help") == 0)) {
@@ -21,7 +35,7 @@ int main(int argc, char* argv[]) {
     }
 
     map<string, list<string>> graph;
-    AbstractReader *reader;
+    AbstractReader *reader = NULL;
 
     if (strcmp(argv[1], "console") == 0) {
         string input;
@@ -55,7 +69,9 @@ int main(int argc, char* argv[]) {
             maxPath = path;
     }
     
-    cout << "The longest sequence of puzzle pieces: " << endl << maxPath << endl << "char length: " << maxPath.length() << endl;;
+    cout << endl << "The longest sequence of puzzle pieces: " << endl << maxPath << endl << "Length: " << maxPath.length() << endl;;
+
+    fileOutput(maxPath);
 
     return 0;
 }

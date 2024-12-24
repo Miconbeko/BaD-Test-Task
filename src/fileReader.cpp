@@ -4,7 +4,7 @@ void FileReader::read() {
     ifstream f(this->input);
 
     if (!f.is_open()) {
-        cerr << "File opening error." << endl;
+        cerr << "Failed to open a file '" << this->input << "'." << endl;
         return;
     }
 
@@ -16,4 +16,6 @@ void FileReader::read() {
 
     if (getline(f, line))
         this->nodeList.push_back(line);
+
+    f.close();
 }
