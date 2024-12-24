@@ -1,4 +1,5 @@
 #include "../includes/dfs.h"
+#include "../includes/puzzleHelper.h"
 
 string pathToString(queue<string> &path) {
     string str;
@@ -11,21 +12,26 @@ string pathToString(queue<string> &path) {
     return str;
 }
 
-string dfs(map<string, vector<string>> &graph, string currentNode, set<string> seen, string path) {    
-    path += currentNode;
+string dfs(map<string, list<string>> &graph, string startNode) {
+    set<string> seen;
+    
+    return dfs(graph, startNode, seen, PuzzleHelper::getPrefix(startNode));
+}
+
+string dfs(map<string, list<string>> &graph, string currentNode, set<string> &seen, string path) {    
+    path += PuzzleHelper::getNotPrefix(currentNode);
     seen.insert(currentNode);
 
     string longestPath = path;
 
-    for (string edge : graph[currentNode]) {
-        // cout << currentNode << " " << edge << endl;
-        if (seen.find(edge) == seen.end()) {
-            string res = dfs(graph, edge, seen, path);
+    for (string edge : graph[PuzzleHelper::getPostfix(currentNode)]) {
+        if (seen.find(edge) != seen.end()) continue;
 
-            if (longestPath.size() < res.size())
-                longestPath = res;
-        }
+        string newPath = dfs(graph, edge, seen, path);
+
+        if (longestPath.size() < newPath.size())longestPath = newPath;
     }
+    seen.erase(currentNode);
 
     return longestPath;
 }

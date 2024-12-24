@@ -16,5 +16,6 @@ class AbstractReader {
 
     public:
         AbstractReader(string input) { this->input = input; };
-        map<string, vector<string>> toMap(); 
+        map<string, list<string>> toMap(); 
+        list<string> getNodeList() { return nodeList; }
 };

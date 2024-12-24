@@ -6,25 +6,24 @@
 
 using namespace std;
 
-string foo(string &a) {
-    a = "world";
-
-    return a;
-}
-
 int main() {
     string input;
 
     getline(cin, input, '-');
 
     ConsoleReader cr(input);
+    map<string, list<string>> graph = cr.toMap();
+    string maxRes = "";
 
-    map<string, vector<string>> graph = cr.toMap();
+    for (string node : cr.getNodeList()) {
+        string res = dfs(graph, node);
 
-    for (map<string, vector<string>>::iterator it = graph.begin(); it != graph.end(); it++) {
-        string res = dfs(graph, it->first);
-        cout << res << endl << endl;
+        cout << res << endl;
+        if (maxRes.length() < res.length())
+            maxRes = res;
     }
+
+    cout << maxRes << endl << "size: " << maxRes.length();
 
     return 0;
 }
