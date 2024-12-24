@@ -13,17 +13,20 @@ int main() {
 
     ConsoleReader cr(input);
     map<string, list<string>> graph = cr.toMap();
-    string maxRes = "";
+    string maxPath = "";
+    int count = 1, nodeListSize = cr.getNodeList().size();
 
     for (string node : cr.getNodeList()) {
-        string res = dfs(graph, node);
+        cout << "Processing node: " << count << "/" << nodeListSize << endl;
 
-        cout << res << endl;
-        if (maxRes.length() < res.length())
-            maxRes = res;
+        string path = dfs(graph, node);
+        
+        count++;
+        if (maxPath.length() < path.length())
+            maxPath = path;
     }
 
-    cout << maxRes << endl << "size: " << maxRes.length();
+    cout << "The longest sequence of puzzle pieces: " << endl << maxPath << endl << "char length: " << maxPath.length() << endl;;
 
     return 0;
 }

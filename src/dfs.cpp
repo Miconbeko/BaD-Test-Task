@@ -15,7 +15,7 @@ string pathToString(queue<string> &path) {
 string dfs(map<string, list<string>> &graph, string startNode) {
     set<string> seen;
     
-    return startNode + dfs(graph, startNode, seen);
+    return PuzzleHelper::getPrefix(startNode) + dfs(graph, startNode, seen);
 }
 
 string dfs(map<string, list<string>> &graph, string currentNode, set<string> &seen) {    
