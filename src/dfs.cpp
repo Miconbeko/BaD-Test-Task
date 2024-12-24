@@ -15,23 +15,22 @@ string pathToString(queue<string> &path) {
 string dfs(map<string, list<string>> &graph, string startNode) {
     set<string> seen;
     
-    return dfs(graph, startNode, seen, PuzzleHelper::getPrefix(startNode));
+    return startNode + dfs(graph, startNode, seen);
 }
 
-string dfs(map<string, list<string>> &graph, string currentNode, set<string> &seen, string path) {    
-    path += PuzzleHelper::getNotPrefix(currentNode);
+string dfs(map<string, list<string>> &graph, string currentNode, set<string> &seen) {    
     seen.insert(currentNode);
 
-    string longestPath = path;
+    string longestPath = "";
 
     for (string edge : graph[PuzzleHelper::getPostfix(currentNode)]) {
         if (seen.find(edge) != seen.end()) continue;
 
-        string newPath = dfs(graph, edge, seen, path);
+        string newPath = dfs(graph, edge, seen);
 
-        if (longestPath.size() < newPath.size())longestPath = newPath;
+        if (longestPath.size() < newPath.size()) longestPath = newPath;
     }
     seen.erase(currentNode);
 
-    return longestPath;
+    return PuzzleHelper::getNotPrefix(currentNode) + longestPath;
 }
