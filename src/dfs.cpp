@@ -1,17 +1,6 @@
 #include "../includes/dfs.h"
 #include "../includes/puzzleHelper.h"
 
-string pathToString(queue<string> &path) {
-    string str;
-    
-    while (!path.empty()) {
-        str += path.front();
-        path.pop();
-    }
-
-    return str;
-}
-
 string dfs(map<string, list<string>> &graph, string startNode) {
     set<string> seen;
     

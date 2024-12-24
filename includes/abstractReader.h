@@ -1,6 +1,8 @@
+#ifndef _ABSTR_READER_
+#define _ABSTR_READER_
+
 #include <string>
 #include <map>
-#include <vector>
 #include <list>
 #include <iostream>
 
@@ -19,3 +21,5 @@ class AbstractReader {
         map<string, list<string>> toMap(); 
         list<string> getNodeList() { return nodeList; }
 };
+
+#endif

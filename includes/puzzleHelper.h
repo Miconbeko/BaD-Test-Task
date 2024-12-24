@@ -1,3 +1,6 @@
+#ifndef _PZL_HLP_
+#define _PZL_HLP_
+
 #include <string>
 
 using namespace std;
@@ -10,3 +13,5 @@ class PuzzleHelper {
         static string getPostfix(string &str) { return str.substr(str.length() - PREFIX_LENGTH); };
         static string getNotPrefix(string &str) { return str.substr(PREFIX_LENGTH); }
 };
+
+#endif

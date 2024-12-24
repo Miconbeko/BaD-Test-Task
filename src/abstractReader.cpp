@@ -1,31 +1,6 @@
 #include "../includes/abstractReader.h"
 #include "../includes/puzzleHelper.h"
 
-bool AbstractReader::compare(string a, string b) {
-    return PuzzleHelper::getPostfix(a) == PuzzleHelper::getPrefix(b);
-}
-
-// map<string, list<string>> AbstractReader::toMap() {
-//     map<string, list<string>> graph;
-
-//     this->read();    
-
-//     for (string key : nodeList) {
-//         list<string> values;
-
-//         for (string value : nodeList) {
-//             if (key == value) continue;
-//             if (!compare(key, value)) continue;
-
-//             values.push_back(value);
-//         }
-
-//         graph.insert({key, values});
-//     }
-
-//     return graph;
-// }
-
 map<string, list<string>> AbstractReader::toMap() {
     map<string, list<string>> graph;
 
