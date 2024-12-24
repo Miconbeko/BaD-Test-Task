@@ -12,8 +12,6 @@ class AbstractReader {
     protected: 
         string input;
         list<string> nodeList;
-        
-        bool compare(string a, string b);
         virtual void read() = 0;
 
     public:

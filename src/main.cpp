@@ -32,6 +32,8 @@ int main(int argc, char* argv[]) {
 
         cout << "\t" << argv[0] << " file <FILE_PATH>" << endl;
         cout << "\t\tRead puzzle pieces from the file in FILE_PATH, separated by ENTER. Make sure that there is no whitespace at the end" << endl << endl;
+        
+        return 0;
     }
 
     map<string, list<string>> graph;
